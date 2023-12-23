@@ -2,24 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:mundumwallet/Common/common_page.dart';
-import 'package:mundumwallet/Multi%20Scroll/multi_scroll_sscreen.dart';
+import 'package:mundumwallet/global/common_page.dart';
+import 'package:mundumwallet/routes/pages.dart';
 
-class splash_screen extends StatefulWidget {
-  const splash_screen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<splash_screen> createState() => _splash_screenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _splash_screenState extends State<splash_screen> {
+class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    Timer(Duration(seconds: 2), () {
-      Get.to(multi_scroll_screen());
+    Timer(const Duration(seconds: 2), () {
+      Get.toNamed(Routes.onBoardScreen);
     });
     super.initState();
   }

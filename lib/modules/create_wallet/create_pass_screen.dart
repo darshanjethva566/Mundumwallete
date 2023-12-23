@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mundumwallet/Common/common_page.dart';
-import 'package:mundumwallet/Common/size_config.dart';
+import 'package:mundumwallet/global/common_page.dart';
+import 'package:mundumwallet/global/size_config.dart';
 
 class create_pass_screen extends StatefulWidget {
   const create_pass_screen({super.key});

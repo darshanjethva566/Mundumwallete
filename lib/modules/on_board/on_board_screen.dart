@@ -1,19 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:mundumwallet/Common/common_page.dart';
+import 'package:mundumwallet/global/common_page.dart';
 
-import '../Common/size_config.dart';
-import '../Create Wallet/create_pass_screen.dart';
-class multi_scroll_screen extends StatefulWidget {
-  const multi_scroll_screen({super.key});
+import '../create_wallet/create_pass_screen.dart';
+class OnBoardScreen extends StatefulWidget {
+  const OnBoardScreen({super.key});
 
   @override
-  State<multi_scroll_screen> createState() => _multi_scroll_screenState();
+  State<OnBoardScreen> createState() => _OnBoardScreenState();
 }
 
-class _multi_scroll_screenState extends State<multi_scroll_screen> {
+class _OnBoardScreenState extends State<OnBoardScreen> {
 
   int _current = 0;
   final CarouselController _controller = CarouselController();
