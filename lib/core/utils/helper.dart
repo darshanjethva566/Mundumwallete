@@ -7,6 +7,7 @@ TextStyle googleDmSansTextStyle({
   Color color = Colors.white,
   double? letterSpacing,
   double? height,
+  // TextOverflow? overflow,
 
 }) =>
     GoogleFonts.dmSans(

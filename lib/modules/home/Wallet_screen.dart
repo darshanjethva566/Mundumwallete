@@ -1,6 +1,7 @@
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -77,7 +78,7 @@ class _WalletState extends State<Wallet> {
                       ),
                     ],
                   ),
-                  duration: Duration(milliseconds: 500),
+                  duration: 200.ms,
                   curve: Curves.easeInToLinear,
                   onValueChanged: (v) {
                     get.tabindex.value = v;
@@ -99,7 +100,7 @@ class _WalletState extends State<Wallet> {
                   children: [
                     SvgPicture.asset("assets/add tokens.svg"),
                     u_static.sPacerWidth(6.w),
-                    u_static.textWithPro("Add Token", 15.0, FontWeight.w400, u_static.grey, 1),
+                    Obx(() =>   u_static.textWithPro( get.tabindex.value==1? "Add Token" : "Add NFTs", 15.0, FontWeight.w400, u_static.grey, 1),),
                   ],
                 )
 

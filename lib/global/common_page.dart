@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mundumwallet/core/utils/helper.dart';
 
 class u_static{
   static Color comm_green_collor=Color(0xff225A27);
@@ -44,10 +45,10 @@ class u_static{
   );
  static Widget textWithPro(String text,double font,FontWeight weight,Color color,int line) {
    return Text(maxLines: line,text,
-       style: TextStyle(overflow: TextOverflow.ellipsis,
+   overflow: TextOverflow.ellipsis,
+       style: googleDmSansTextStyle(
            fontSize: font.sp,fontWeight: weight,
-           color: color,
-           fontFamily: "DM Sans"));
+           color: color,));
  }
  static   Widget liNe(Color color) => Container(height: 1,width: 1.sw,color: color);
   static Widget coiNs() {

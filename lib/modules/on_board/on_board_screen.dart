@@ -57,48 +57,46 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 width: 1.sw,
                 child: CarouselSlider(
                   items: List.generate(4, (index) {
-                    return InkWell(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 110.w,
-                              width: 110.w,
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                image: AssetImage("assets/multi_scroll.png"),
-                                fit: BoxFit.cover,
-                              )),
-                            ),
-                            SizedBox(
-                              height: 40.h,
-                            ),
-                            Text(
-                              scrollTitle[index],
-                              style: googleDmSansTextStyle(
-                                color: const Color(0xFFC7AE8D),
-                                fontSize: 24.sp,
-                                fontWeight: FontWeight.w400,
-                                height: 0.06,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 16.h,
-                            ),
-                            Expanded(
-                                child: Text(
-                              scrollDesc[index],
-                              style: googleDmSansTextStyle(
-                                color: const Color(0xFFADADAD),
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                                height: 0,
-                                letterSpacing: -0.32,
-                              ),
-                              textAlign: TextAlign.center,
-                            )),
-                          ],
-                        ));
+                    return Column(
+                      children: [
+                        Container(
+                          height: 110.w,
+                          width: 110.w,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage("assets/multi_scroll.png"),
+                            fit: BoxFit.cover,
+                          )),
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        Text(
+                          scrollTitle[index],
+                          style: googleDmSansTextStyle(
+                            color: const Color(0xFFC7AE8D),
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w400,
+                            height: 0.06,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        Expanded(
+                            child: Text(
+                          scrollDesc[index],
+                          style: googleDmSansTextStyle(
+                            color: const Color(0xFFADADAD),
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                            letterSpacing: -0.32,
+                          ),
+                          textAlign: TextAlign.center,
+                        )),
+                      ],
+                    );
                   }),
                   carouselController: _controller,
                   options: CarouselOptions(
@@ -123,26 +121,23 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: scrollTitle.asMap().entries.map((entry) {
-                return InkWell(
-                  onTap: () => _controller.animateToPage(entry.key),
-                  child: AnimatedContainer(
-                    width: _current == entry.key ? 20.w : 7.w,
-                    height: _current == entry.key ? 20.w : 7.w,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 8.h, horizontal: 4.w),
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage("assets/scroll_star.png")),
-                      borderRadius:
-                          // _current == entry.key
-                          //     ? BorderRadius.circular(20):
-                          BorderRadius.circular(100.r),
-                      color: _current == entry.key
-                          ? Colors.transparent
-                          : Colors.white,
-                    ),
-                    duration: const Duration(milliseconds: 400),
+                return AnimatedContainer(
+                  width: _current == entry.key ? 20.w : 7.w,
+                  height: _current == entry.key ? 20.w : 7.w,
+                  margin:
+                      EdgeInsets.symmetric(vertical: 8.h, horizontal: 4.w),
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                        image: AssetImage("assets/scroll_star.png")),
+                    borderRadius:
+                        // _current == entry.key
+                        //     ? BorderRadius.circular(20):
+                        BorderRadius.circular(100.r),
+                    color: _current == entry.key
+                        ? Colors.transparent
+                        : Colors.white,
                   ),
+                  duration: const Duration(milliseconds: 400),
                 );
               }).toList(),
             ),

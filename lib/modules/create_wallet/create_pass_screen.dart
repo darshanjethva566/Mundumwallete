@@ -7,7 +7,7 @@ import 'package:mundumwallet/core/utils/helper.dart';
 import 'package:mundumwallet/global/common_page.dart';
 import 'package:mundumwallet/global/hr_divider.dart';
 import 'package:mundumwallet/global/star_widget.dart';
-import 'package:mundumwallet/modules/home/home_screen.dart';
+import 'package:mundumwallet/routes/pages.dart';
 
 class CreatePassScreen extends StatefulWidget {
   const CreatePassScreen({super.key});
@@ -121,8 +121,12 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          _pageController.nextPage(
-                              duration: 400.ms, curve: Curves.easeOut);
+                          if (currPage == 1) {
+                            Get.offNamed(Routes.homescreen);
+                          } else {
+                            _pageController.nextPage(
+                                duration: 400.ms, curve: Curves.easeOut);
+                          }
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 12.w),
@@ -148,16 +152,24 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                   ),
                 ),
               ),
-              
-              currPage == 0 ? SizedBox(height: 48.h,) : Container(),
+
+              currPage == 0
+                  ? SizedBox(
+                      height: 48.h,
+                    )
+                  : Container(),
 
               //NEXT
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: GestureDetector(
                   onTap: () {
-                    _pageController.nextPage(
-                        duration: 400.ms, curve: Curves.easeOut);
+                    if (currPage == 1) {
+                      Get.offNamed(Routes.homescreen);
+                    } else {
+                      _pageController.nextPage(
+                          duration: 400.ms, curve: Curves.easeOut);
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12.w),
