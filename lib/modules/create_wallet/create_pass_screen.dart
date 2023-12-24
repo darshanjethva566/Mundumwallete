@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mundumwallet/global/common_page.dart';
 import 'package:mundumwallet/global/size_config.dart';
+import 'package:mundumwallet/modules/home/home_screen.dart';
 
 class create_pass_screen extends StatefulWidget {
   const create_pass_screen({super.key});
@@ -140,15 +141,20 @@ class _create_pass_screenState extends State<create_pass_screen> {
             Spacer(),
 
             //NEXT
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(color: Color(0xff9493AC)),
-                borderRadius: BorderRadius.circular(16),
+            InkWell(
+              onTap: () {
+                Get.to(HomeScreen());
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(color: Color(0xff9493AC)),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text("Next",style: TextStyle(color: Color(0xff9493AC)),),
               ),
-              child: Text("Next",style: TextStyle(color: Color(0xff9493AC)),),
             ),
             SizedBox(height: 10,),
 
