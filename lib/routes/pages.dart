@@ -25,7 +25,7 @@ abstract class AppPages {
       page: () => const CreatePassScreen(),
     ),
     GetPage(
-      name: Routes.settings,
+      name: Routes.setting,
       page: () => const SettingsScreen(),
     ),
   ];
