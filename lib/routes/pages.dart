@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:mundumwallet/modules/home/home_screen.dart';
+import 'package:mundumwallet/modules/create_wallet/create_pass_screen.dart';
 import 'package:mundumwallet/modules/on_board/on_board_screen.dart';
+import 'package:mundumwallet/modules/settings/settings_screen.dart';
 import 'package:mundumwallet/modules/splash/splash_screen.dart';
 part './routes.dart';
 
@@ -17,6 +19,14 @@ abstract class AppPages {
     GetPage(
       name: Routes.homescreen,
       page: () => const HomeScreen(),
+    ),
+    GetPage(
+      name: Routes.createPassScreen,
+      page: () => const CreatePassScreen(),
+    ),
+    GetPage(
+      name: Routes.settings,
+      page: () => const SettingsScreen(),
     ),
   ];
 }
