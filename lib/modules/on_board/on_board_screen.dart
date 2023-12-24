@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mundumwallet/core/utils/helper.dart';
 import 'package:mundumwallet/global/common_page.dart';
+import 'package:mundumwallet/routes/pages.dart';
 
-import '../create_wallet/create_pass_screen.dart';
+
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({super.key});
 
@@ -12,18 +15,17 @@ class OnBoardScreen extends StatefulWidget {
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
-
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
-  List scroll_title=[
+  List scrollTitle = [
     "Multicurrency",
     "Send",
     "Security",
     "MUNDUM",
   ];
 
-  List scroll_desc=[
+  List scrollDesc = [
     "Get access to your favorite  ERC 20 cryptocurrencies",
     "Fast and secure sending of cryptocurrencies",
     "Conduct secure receive with cryptocurrencies",
@@ -32,57 +34,71 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final h=MediaQuery.of(context).size.height;
-    final w=MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: w*0.02),
-      height: h,
-      width: w,
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      height: 1.w,
+      width: 1.sh,
       decoration: BoxDecoration(
         gradient: u_static.comm_grad,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Spacer(),
+            SizedBox(
+              height: 217.h,
+            ),
 
             //CONTAINER
             Expanded(
-              child: Container(
-                width: w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8)),
+              child: SizedBox(
+                width: 1.sw,
                 child: CarouselSlider(
-                  items: List.generate(
-                      4, (index) {
+                  items: List.generate(4, (index) {
                     return InkWell(
-                      onTap: () {
-              
-                      },
-                      child:Column(
-                        children: [
-                          Container(
-                            height: h*0.14,
-                            width: w*0.3,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 110.w,
+                              width: 110.w,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
                                 image: AssetImage("assets/multi_scroll.png"),
-                                fit: BoxFit.fill
-                              )
+                                fit: BoxFit.cover,
+                              )),
                             ),
-                          ),
-                          SizedBox(height: 10,),
-                          Text(scroll_title[index],style: u_static.scroll_title_style,),
-                          SizedBox(height: 10,),
-                          Expanded(
-                              child: Text(scroll_desc[index],style: u_static.scroll_desc_style,textAlign: TextAlign.center,)
-                          ),
-                        ],
-                      )
-                    );
+                            SizedBox(
+                              height: 40.h,
+                            ),
+                            Text(
+                              scrollTitle[index],
+                              style: googleDmSansTextStyle(
+                                color: const Color(0xFFC7AE8D),
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.w400,
+                                height: 0.06,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            Expanded(
+                                child: Text(
+                              scrollDesc[index],
+                              style: googleDmSansTextStyle(
+                                color: const Color(0xFFADADAD),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                                letterSpacing: -0.32,
+                              ),
+                              textAlign: TextAlign.center,
+                            )),
+                          ],
+                        ));
                   }),
                   carouselController: _controller,
                   options: CarouselOptions(
@@ -99,66 +115,89 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 16.h,
+            ),
 
             //SCROLL EFFECT
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:
-              scroll_title.asMap().entries.map((entry) {
+              children: scrollTitle.asMap().entries.map((entry) {
                 return InkWell(
                   onTap: () => _controller.animateToPage(entry.key),
-                  child: Container(
-                    width: _current == entry.key ? 20 : 7.0,
-                    height: _current == entry.key ? 22:7.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
+                  child: AnimatedContainer(
+                    width: _current == entry.key ? 20.w : 7.w,
+                    height: _current == entry.key ? 20.w : 7.w,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 8.h, horizontal: 4.w),
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/scroll_star.png")
-                      ),
-                        borderRadius:
-                        // _current == entry.key
-                        //     ? BorderRadius.circular(20):
-                        BorderRadius.circular(100),
-                        color: _current == entry.key
-                            ? Colors.transparent
-                            : Colors.white),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/scroll_star.png")),
+                      borderRadius:
+                          // _current == entry.key
+                          //     ? BorderRadius.circular(20):
+                          BorderRadius.circular(100.r),
+                      color: _current == entry.key
+                          ? Colors.transparent
+                          : Colors.white,
+                    ),
+                    duration: const Duration(milliseconds: 400),
                   ),
                 );
               }).toList(),
             ),
-            Spacer(),
+            SizedBox(
+              height: 169.h,
+            ),
 
             //CREATE NEW WALLET
             InkWell(
               onTap: () {
-                Get.to(create_pass_screen());
+                Get.toNamed(Routes.createPassScreen);
               },
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: 12.h),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
-                child: Text("Ceate a new wallet"),
+                child: Text(
+                  'Create a new wallet',
+                  textAlign: TextAlign.center,
+                  style: googleDmSansTextStyle(
+                    color: Colors.black,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 16.h,
+            ),
 
             //ALREADY HAVE WALLET
             Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Text("I already have a wallet",style: TextStyle(color: Colors.white),),
+                padding: EdgeInsets.symmetric(vertical: 12.h),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Text(
+                  'I already have a wallet',
+                  textAlign: TextAlign.center,
+                  style: googleDmSansTextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                )),
+            SizedBox(
+              height: 10.h,
             ),
-            SizedBox(height: 10,),
           ],
         ),
       ),
